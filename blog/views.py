@@ -13,6 +13,17 @@ def index(request):
     )
 
 
+def post_list(request):
+    posts = Post.objects.all().order_by('-pk')
+    return render(
+        request,
+        'blog/post_list.html',
+        {
+            'post_list' : posts,
+        }
+    )    
+
+
 def single_post_page(request, pk):
     post = Post.objects.get(pk=pk)
 

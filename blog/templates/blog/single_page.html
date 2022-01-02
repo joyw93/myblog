@@ -2,68 +2,19 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/static/blog/dist/css/bootstrap.min.css">
-    <title>파이썬 백엔드 개발자 조용원입니다.</title>
+    <title>{{ post.title }} - Blog</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown link
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-            </ul>
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Log In</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+    <nav>
+        <a href="/blog/">Blog</a>
+    </nav>
 
-    <div class="container">
-        <div class="row my-3">
-            <div class="col-md-8 col-lg-9">
-                <h1>Blog</h1>
-                <p>아직 작성하지 않았습니다.</p>
-            </div>
+    <h1>{{ post.title }}</h1>
+    <h4>{{ post.created_at }}</h4>
+    <p>{{ post.content }}</p>
 
-            <div class="col-md-4 col-lg-3">
-                <h3>Serch</h3>
-                <h3>Category</h3>
-            </div>
-        </div>
-    </div>
+    <hr/>
 
-
-    <h1>안녕하세요, 조용원입니다.</h1>
-    <h2>포트폴리오 페이지입니다.</h2>
-    <h3>아직 만드는 중입니다.</h3>
-
+    <h3>여기에 댓글이 올 예정임</h3>
 </body>
-<script src="/static/blog/dist/js/jquery-3.6.0.min.js"></script>
-<script src="/static/blog/dist/css/bootstrap.min.css"></script>
-<script src="/static/blog/dist/js/bootstrap.bundle.min.js"></script>  
 </html>
