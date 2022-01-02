@@ -3,7 +3,7 @@ from . import views
 
 
 urlpatterns = [
-    path('<int:pk>/', views.single_post_page),
+    path('<int:pk>/', views.post_detail),
     path('', views.post_list),
        
 ]
