@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/static/blog/dist/css/bootstrap.min.css">
-  <title>파이썬 백엔드 개발자 조용원입니다.</title>
+  <title>Blog | 파이썬 백엔드 개발자 조용원입니다.</title>
 </head>
 
 <body>
@@ -71,9 +71,9 @@
 
   <div class="container">
     <div class="row my-3">
-      <div class="col-md-8 col-lg-9">
+      <div class="col-md-8 col-lg-9" id = "main-area">
         <h1>Blog</h1>
-
+        {% if post_list.exists %}
         {% for p in post_list %}
 
         <div class="card mb-4">
@@ -86,9 +86,9 @@
             <div class="small text-muted">January 1, 2021</div>
             <h2 class="card-title h4">{{p.title}}</h2>
             {% if p.hook_text %}
-              <h5 class='text-muted'>{{p.hook_text}}</h5>
+            <h5 class='text-muted'>{{p.hook_text}}</h5>
             {% endif %}
-            <p class="card-text">{{p.content | truncatewords:45}}</p> 
+            <p class="card-text">{{p.content | truncatewords:45}}</p>
             <!-- or truncatechar:45 -->
             <a href="{{p.get_absolute_url}}" class="btn btn-primary" href="#!">Read more →</a>
           </div>
@@ -98,6 +98,9 @@
           </div>
         </div>
         {% endfor %}
+        {% else %}
+        <h1>아직 게시물이 없습니다.</h1>
+        {% endif %}
         <nav aria-label="Pagination">
           <hr class="my-0" />
           <ul class="pagination justify-content-center my-4">
