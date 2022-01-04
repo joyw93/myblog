@@ -80,12 +80,16 @@
           {% if p.head_image %}
           <a href="#!"><img class="card-img-top" src="{{p.head_image.url}}" alt="..." /></a>
           {% else %}
-          <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+          <a href="#!"><img class="card-img-top" src="https://picsum.photos/id/{{p.id}}/600/200" alt="..." /></a>
           {% endif %}
           <div class="card-body">
             <div class="small text-muted">January 1, 2021</div>
             <h2 class="card-title h4">{{p.title}}</h2>
-            <p class="card-text">{{p.content}}</p>
+            {% if p.hook_text %}
+              <h5 class='text-muted'>{{p.hook_text}}</h5>
+            {% endif %}
+            <p class="card-text">{{p.content | truncatewords:45}}</p> 
+            <!-- or truncatechar:45 -->
             <a href="{{p.get_absolute_url}}" class="btn btn-primary" href="#!">Read more →</a>
           </div>
           <div class='card-footer text-muted'>
