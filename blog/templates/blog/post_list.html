@@ -1,17 +1,19 @@
 {% extends 'blog/base.html' %}
 {% block main_area %}
 
-<h1>Blog</h1>
+<h1>Blog {% if category %}<span class="badge bg-secondary text-decoration-none link-light">{{category}}</span>{% endif %}</h1>
+
 {% if post_list.exists %}
 {% for p in post_list %}
 
-<div class="card mb-4">
+<div class="card mb-4" id='post-{{p.pk}}'>
   {% if p.head_image %}
   <a href="#!"><img class="card-img-top" src="{{p.head_image.url}}" alt="..." /></a>
   {% else %}
   <a href="#!"><img class="card-img-top" src="https://picsum.photos/id/{{p.id}}/600/200" alt="..." /></a>
   {% endif %}
   <div class="card-body">
+    <span class="badge bg-secondary float-right">{{p.category}}</span>
     <div class="small text-muted">January 1, 2021</div>
     <h2 class="card-title h4">{{p.title}}</h2>
     {% if p.hook_text %}
@@ -23,7 +25,7 @@
   </div>
   <div class='card-footer text-muted'>
     Posted on {{p.created_at}} by
-    <a href="#">작성자명 쓸 위치(개발예정)</a>
+    <a href="#">{{p.author | upper }}</a>
   </div>
 </div>
 {% endfor %}
