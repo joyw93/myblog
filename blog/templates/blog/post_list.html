@@ -1,43 +1,67 @@
-{% extends 'blog/base.html' %}
-{% block main_area %}
+{% extends 'blog/base.html' %} {% block main_area %}
 
-<h1>Blog {% if category %}<span class="badge bg-secondary text-decoration-none link-light">{{category}}</span>{% endif %}</h1>
+<h1>
+  Blog {% if category %}<span
+    class="badge bg-secondary text-decoration-none link-light"
+    >{{category}}</span
+  >{% endif %} {% if tag %}<span class="badge bg-light text-dark text-decoration-none"
+    ><i class="fas fa-tags"></i>{{tag}} ({{tag.post_set.count }})</span
+  >{% endif %}
+</h1>
 
-{% if post_list.exists %}
-{% for p in post_list %}
+{% if post_list.exists %} {% for p in post_list %}
 
-<div class="card mb-4" id='post-{{p.pk}}'>
+<div class="card mb-4" id="post-{{p.pk}}">
   {% if p.head_image %}
-  <a href="#!"><img class="card-img-top" src="{{p.head_image.url}}" alt="..." /></a>
+  <a href="#!"
+    ><img class="card-img-top" src="{{p.head_image.url}}" alt="..."
+  /></a>
   {% else %}
-  <a href="#!"><img class="card-img-top" src="https://picsum.photos/id/{{p.id}}/600/200" alt="..." /></a>
+  <a href="#!"
+    ><img
+      class="card-img-top"
+      src="https://picsum.photos/id/{{p.id}}/600/200"
+      alt="..."
+  /></a>
   {% endif %}
   <div class="card-body">
     <span class="badge bg-secondary float-right">{{p.category}}</span>
     <div class="small text-muted">January 1, 2021</div>
     <h2 class="card-title h4">{{p.title}}</h2>
     {% if p.hook_text %}
-    <h5 class='text-muted'>{{p.hook_text}}</h5>
+    <h5 class="text-muted">{{p.hook_text}}</h5>
     {% endif %}
     <p class="card-text">{{p.content | truncatewords:45}}</p>
     <!-- or truncatechar:45 -->
-    <a href="{{p.get_absolute_url}}" class="btn btn-primary" href="#!">Read more →</a>
+    {% if p.tags.exists %}
+    <i class="fas fa-tags"></i>
+    {% for tag in p.tags.iterator %}
+    <a href="{{tag.get_absolute_url}}"><span class="badge bg-light text-dark text-decoration-none">{{tag}}</span></a>
+    {% endfor %}
+    <br />
+    <br />
+    {% endif %}
+    <a href="{{p.get_absolute_url}}" class="btn btn-primary" href="#!"
+      >Read more →</a
+    >
   </div>
-  <div class='card-footer text-muted'>
+  <div class="card-footer text-muted">
     Posted on {{p.created_at}} by
     <a href="#">{{p.author | upper }}</a>
   </div>
 </div>
-{% endfor %}
-{% else %}
+{% endfor %} {% else %}
 <h1>아직 게시물이 없습니다.</h1>
 {% endif %}
 <nav aria-label="Pagination">
   <hr class="my-0" />
   <ul class="pagination justify-content-center my-4">
-    <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a>
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a>
     </li>
-    <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+    <li class="page-item active" aria-current="page">
+      <a class="page-link" href="#!">1</a>
+    </li>
     <li class="page-item"><a class="page-link" href="#!">2</a></li>
     <li class="page-item"><a class="page-link" href="#!">3</a></li>
     <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
