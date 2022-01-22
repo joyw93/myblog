@@ -7,7 +7,7 @@
     <header class="mb-4">
       <!-- Post title-->
       <h1 class="fw-bolder mb-1">{{post.title}}</h1>
-      {% if p.hook_text %}
+      {% if post.hook_text %}
       <h5 class="text-muted">{{post.hook_text}}</h5>
       {% endif %}
       <!-- Post meta content-->
@@ -45,7 +45,7 @@
     </figure>
     {% endif %}
     <!-- Post content-->
-    <section class="mb-5">{{ post.content }}</section>
+    <section class="mb-5">{{ post.get_content_markdown | safe }}</section>
     {% if post.tags.exists %}
     <i class="fas fa-tags"></i>
     {% for tag in post.tags.all %}

@@ -1,3 +1,4 @@
+{% load socialaccount %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="#">Plog</a>
@@ -16,19 +17,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown link
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
+                
             </ul>
             <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="ture" aria-expanded="false">
+                        {{user.username}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/accounts/logout/">Log Out</a>
+                    </div>
+                </li>
+                {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</a>
                     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
@@ -43,9 +44,9 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="d-grid gap-2">
-                                        <button class="btn btn-primary" type="button">페이스북</button>
-                                        <button class="btn btn-warning" type="button">카카오</button>
-                                        <button class="btn btn-success" type="button">네이버</button>
+                                        <a role="button" class="btn btn-outline-secondary btn-block-block btn-sm" href="{% provider_login_url 'google' %}">구글 계정으로 로그인</a>
+                                        <a role="button" class="btn btn-outline-secondary btn-block-block btn-sm" href="/accounts/signup/">회원가입</a>
+                                        <a role="button" class="btn btn-outline-secondary btn-block-block btn-sm" href="/accounts/login/">로그인</a>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -56,6 +57,7 @@
                         </div>
                     </div>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>
