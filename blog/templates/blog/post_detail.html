@@ -19,11 +19,15 @@
       <a class="badge bg-secondary text-decoration-none link-light" href="#!"
         >{{post.category}}</a
       >
-      <a class="badge bg-secondary text-decoration-none link-light" href="#!"
-        >Freebies</a
-      >
       {% else %}
-      <span class="badge bg-secondary float-right">미분류</span>
+      <a class="badge bg-secondary text-decoration-none link-light" href="#!"
+        >미분류</a
+      >
+      {% endif %}
+
+      {% if user.is_authenticated and user == post.author %}
+      <a class="btn btn-info btn-sm float-end" href="/blog/update_post/{{post.pk}}" role="button"><i
+        class="fas fa-pen"></i>&nbsp;&nbsp;Edit Post</a>
       {% endif %}
     </header>
     <!-- Preview image figure-->
