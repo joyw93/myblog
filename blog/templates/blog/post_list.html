@@ -8,7 +8,9 @@
 {% endif %}
 {% endif %}
 <h1>
-  Blog {% if category %}<span class="badge bg-secondary text-decoration-none link-light">{{category}}</span>{% endif %}
+  Blog
+  {% if search_info %}<small class="text-muted">{{search_info}}</small>{% endif %} 
+  {% if category %}<span class="badge bg-secondary text-decoration-none link-light">{{category}}</span>{% endif %}
   {% if tag %}<span class="badge bg-light text-dark text-decoration-none"><i class="fas fa-tags"></i>{{tag}}
     ({{tag.post_set.count }})</span>{% endif %}
 </h1>
@@ -47,7 +49,7 @@
   </div>
 </div>
 {% endfor %} {% else %}
-<h1>아직 게시물이 없습니다.</h1>
+<h1>게시물이 없습니다.</h1>
 {% endif %}
 
 {% if is_paginated %}
