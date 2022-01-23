@@ -17,7 +17,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
                 </li>
-                
             </ul>
             <ul class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
@@ -44,9 +43,9 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="d-grid gap-2">
-                                        <a role="button" class="btn btn-outline-secondary btn-block-block btn-sm" href="{% provider_login_url 'google' %}">구글 계정으로 로그인</a>
-                                        <a role="button" class="btn btn-outline-secondary btn-block-block btn-sm" href="/accounts/signup/">회원가입</a>
-                                        <a role="button" class="btn btn-outline-secondary btn-block-block btn-sm" href="/accounts/login/">로그인</a>
+                                        <a role="button" class="btn btn-outline-secondary btn-block btn-sm" href="{% provider_login_url 'google' %}">구글 계정으로 로그인</a>
+                                        <a role="button" class="btn btn-outline-secondary btn-block btn-sm" href="/accounts/signup/">회원가입</a>
+                                        <a role="button" class="btn btn-outline-secondary btn-block btn-sm" href="/accounts/login/">로그인</a>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
